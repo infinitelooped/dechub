@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+	<link href="https://fonts.googleapis.com/css?family=Oswald|Raleway" rel="stylesheet">
+	<title>Decoding Hub_</title>
+	<script src="js/jquery-3.1.1.js"></script>
+	<script src="js/scrolloverflow.min.js"></script>
+	<script src="js/jquery.fullPage.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="jquery.fullPage.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script>
+		$(document).ready(function() {
+			$('#pages').fullpage({
+				anchors: ['main', 'rev', 'atbash', 'rot', 'morse','rect', 'kwsearch'],
+				navigation: true,
+				navigationPosition: 'left',
+				navigationTooltips: ['Main', 'Reverse', 'Atbash', 'Caesar', 'Morse', 'Rectangles', 'KW Search'],
+				scrollOverflow: true
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="pages">
+
+		<!-- Main -->
+		<div class="section">
+			<div class="header-icon">
+				<img class="icon" src="icons/main-icon.png">
+				<h1>Decoding Hub</h1>
+			</div>
+			<div class="content">
+				<ul id="buttons">
+					<li><a class="menu" href="#rev">Reverse</a></li>
+					<li><a class="menu" href="#atbash">Atbash</a></li>
+					<li><a class="menu" href="#rot">Caesar Shift</a></li>
+					<li><a class="menu" href="#morse">Morse</a></li>
+					<li><a class="menu" href="#rect">Rectangles</a></li>
+					<li><a class="menu" href="#kwsearch">Keyword Search</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Reverse -->
+		<div class="section">
+			<div class="header-icon">
+				<img class="icon" src="icons/reverse-icon.png">
+				<h1>Reverse</h1>
+			</div>
+			<div class="input">
+				<p>Input your text here:</p>
+				<textarea rows="4" cols="20" id="rev-input"></textarea>
+			</div>
+			<div class="output">
+				<p>Result:</p>
+				<textarea readonly rows="4" cols="20" id="rev-output"></textarea>
+				<button class="btn bar" data-clipboard-target="#rev-output">Copy to clipboard</button>
+			</div>
+		</div>
+
+		<!-- Atbash -->
+		<div class= "section">
+			<div class="header-icon">
+				<img class="icon" src="icons/atbash-icon.png">
+				<h1>Atbash</h1>
+			</div>
+			<div class="input">
+				<p>Select the mode:</p>
+				<select id = "atbash-mode">
+					<option value='alpha'>Alphabetic</option>
+					<option value='num09'>Numeric (0=9)</option>
+					<option value='num19'>Numeric (1=9)</option>
+					<option value='alphanum09'>Alphanumeric (0=9)</option>
+					<option value='alphanum19'>Alphanumeric (1=9)</option>
+					<option value='hex'>Hexadecimal</option>
+				</select>
+				<p>Input your text here:</p>
+				<textarea rows="4" cols="20" id="atbash-input"></textarea>
+			</div>
+			<div class="output">
+				<p>Result:</p>
+				<textarea readonly rows="4" cols="20" id="atbash-output"></textarea>
+				<button class="btn bar" data-clipboard-target="#atbash-output">Copy to clipboard</button>
+			</div>
+		</div>
+
+		<!-- Caesar Shift -->
+		<div class= "section">
+			<div class="header-icon">
+				<img class="icon" src="icons/rot-icon.png">
+				<h1>Caesar Shift</h1>
+			</div>
+			<div class="input">
+				<p>Select the mode:</p>
+				<select id="rot-mode">
+					<option value='alpha'>Alphabetic</option>
+					<option value='num+'>Numeric (+)</option>
+					<option value='num-'>Numeric (-)</option>
+					<option value='alphanum+'>Alphanumeric (+)</option>
+					<option value='alphanum-'>Alphanumeric (-)</option>
+				</select>
+				<p>Input your text here:</p>
+				<textarea rows="4" cols="20" id="rot-input"></textarea>
+			</div>
+			<div class="output">
+				<div id="rot-output">
+				</div>
+			</div>
+		</div>
+
+		<!-- Morse -->
+		<div class= "section">
+			<div class="header-icon">
+				<img class="icon" src="icons/morse-icon.png">
+				<h1>Morse</h1>
+			</div>
+			<div class="input">
+				<p>Select the mode:</p>
+				<select id="morse-mode">
+					<option value='text2morse'>Text to Morse</option>
+					<option value='morse2text'>Morse to Text</option>
+					<optgroup label='Text to Text'>
+						<option value='text2text-invert'>Morse Invert</option>
+						<option value='text2text-reverse'>Morse Reverse</option>
+						<option value='text2text-invert+reverse'>Morse Invert+Reverse</option>
+					</optgroup>
+				</select>
+				<p>Input your text here:</p>
+				<textarea rows="4" cols="20" id="morse-input"></textarea>
+			</div>
+			<div class="output">
+				<p>Result:</p>
+				<textarea readonly rows="4" cols="20" id="morse-output"></textarea>
+				<button class="btn bar" data-clipboard-target="#morse-output">Copy to clipboard</button>
+			</div>
+		</div>
+
+		<!-- Rectangles -->
+		<div class="section">
+			<div class="header-icon">
+				<img class="icon" src="icons/rect-icon.png">
+				<h1>Rectangles</h1>
+			</div>
+			<div class="input">
+				<p>Input your text here:</p>
+				<textarea rows="4" cols="20" id="rect-input"></textarea>
+			</div>
+		</div>
+
+		<!-- Keyword Search -->
+		<div class="section">
+			<div class="header-icon">
+				<img class="icon" src="icons/kwsearch-icon.png">
+				<h1>Keyword Search</h1>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/clipboard.min.js"></script>
+	<script>
+		var clipboard = new Clipboard('.btn');
+	</script>
+	<script src="js/auxiliary.js"></script>
+	<script src="js/reverse.js"></script>
+	<script src="js/atbash.js"></script>
+	<script src="js/rot.js"></script>
+	<script src="js/morse.js"></script>
+	</body>
+</html>
